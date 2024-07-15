@@ -27,4 +27,4 @@ yarn-error.log*
 /.sonarlint/
 /.metadata/
 /.vscode/
-.iml
+.iml!/.idea/
