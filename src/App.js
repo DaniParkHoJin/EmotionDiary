@@ -110,9 +110,9 @@ function App() {
                     <div className="App">
                         <Routes>
                             <Route path="/" element={<Home/>}/>
-                            <Route path="/new" element={<New/>}/>
-                            <Route path="/diary/:id" element={<Diary/>}/>
-                            <Route path="/edit/:id" element={<Edit/>}/>
+                            <Route path="/new" element={<New />}/>
+                            <Route path="/diary/:id" element={<Diary />}/>
+                            <Route path="/edit/:id" element={<Edit />}/>
                         </Routes>
                     </div>
                 </DiaryDispatchContext.Provider>

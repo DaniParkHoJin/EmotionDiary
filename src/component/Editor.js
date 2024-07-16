@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {emotionList, getFormattedDate} from "../util";
 import Button from "./Button";
 import {useNavigate} from "react-router-dom";
-import EmotionItem from "./EmotionsItem";
+import EmotionItem from "./EmotionItem";
 
 const Editor = ({initData, onSubmit}) => {
     const navigate = useNavigate();
