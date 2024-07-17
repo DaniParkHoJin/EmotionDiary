@@ -34,6 +34,7 @@ const reducer = (state, action) => {
         }
     }
 }
+/**
 const mockData = [
     {
         id: "mock1",
@@ -54,6 +55,7 @@ const mockData = [
         emotionId: 3,
     },
 ];
+*/
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();

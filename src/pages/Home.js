@@ -5,7 +5,7 @@ import {useState, useContext, useEffect} from "react";
 import {DiaryStateContext} from "../App";
 import {getMonthRangeByDate} from "../util";
 import DiaryList from "../component/DiaryList";
-
+import {getMonthRangeBydate, setPageTitle} from "../util";
 
 const Home = () => {
     const data = useContext(DiaryStateContext);
@@ -20,6 +20,10 @@ const Home = () => {
     const onDecreaseMonth = () => {
         setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1));
     }
+    useEffect(() => {
+        setPageTitle("Parkhojin의 감정 일기장");
+    }, []);
+
     useEffect(() => {
         if (data.length >= 1) {
             const {beginTimeStamp, endTimeStamp} = getMonthRangeByDate(pivotDate);
