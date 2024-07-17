@@ -1,5 +1,5 @@
 import "./Editor.css";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import {emotionList, getFormattedDate} from "../util";
 import Button from "./Button";
 import {useNavigate} from "react-router-dom";
@@ -30,12 +30,12 @@ const Editor = ({initData, onSubmit}) => {
     const handleOnGoBack = () => {
         navigate(-1);
     }
-    const handleChangeEmotion = (emotionId) => {
-        setState({
-            ...state,
-            emotionId,
-        });
-    };
+    const handleChangeEmotion = useCallback((emotionId) => {
+        setState((state) => ({
+        ...state,
+        emotionId,
+        }));
+    }, []);
 
     useEffect(() => {
         if (initData) {
@@ -45,7 +45,6 @@ const Editor = ({initData, onSubmit}) => {
             });
         }
     }, [initData]);
-
 
     return (
         <div className="Editor">
@@ -77,7 +76,7 @@ const Editor = ({initData, onSubmit}) => {
                 </div>
             </div>
             <div className="editor_section">
-                <div className="editor_section botton_section">
+                <div className="editor_section bottom_section">
                     <Button text={"취소하기"} onClick={handleOnGoBack}/>
                     <Button text={"작성완료"} type={"positive"} onClick={handleSubmit}/>
                 </div>
