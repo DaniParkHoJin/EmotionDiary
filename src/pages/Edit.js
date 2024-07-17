@@ -2,10 +2,10 @@ import {useNavigate, useParams} from "react-router-dom";
 import useDiary from "../hoooks/useDiary";
 import Button from "../component/Button";
 import Header from "../component/Header";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {DiaryDispatchContext} from "../App";
 import Editor from "../component/Editor";
-
+import {setPageTitle} from "../util";
 
 const Edit = () => {
     const {id} = useParams();
@@ -27,11 +27,14 @@ const Edit = () => {
 
     const onSubmit = (data) => {
         if (window.confirm("일기를 정말 수정할까요?")) {
-            const {date, content, emotionId } = data;
+            const {date, content, emotionId} = data;
             onUpdate(id, date, content, emotionId);
             navigate("/", {replace: true});
         }
     };
+    useEffect(() => {
+        setPageTitle(`${id}번 일기 수정하기`);
+    }, []);
 
     if (!data) {
         return <div>일기를 불러오고 있습니다... 잠시만 기다려주세요.</div>
@@ -42,7 +45,7 @@ const Edit = () => {
                         leftChild={<Button text={"< 뒤로 가기 "} onClick={goBack}/>}
                         rightChild={<Button type={navigate} text={"삭제하기"} onClick={onClickDelete}/>}
                 />
-                <Editor initData={data} onSubmit={onSubmit} />
+                <Editor initData={data} onSubmit={onSubmit}/>
             </div>
         );
     }

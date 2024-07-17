@@ -4,6 +4,9 @@ import Button from "../component/Button";
 import Header from "../component/Header";
 import {getFormattedDate} from "../util";
 import Viewer from "../component/Viewer";
+import {useEffect} from "react";
+import {setPageTitle} from "../util";
+
 const Diary = () => {
     const {id} = useParams();
     const data = useDiary(id);
@@ -14,7 +17,9 @@ const Diary = () => {
     const goEdit = () => {
       navigate(`/edit/${id}`);
     };
-
+    useEffect(() => {
+        setPageTitle(`${id}번 일기`);
+    }, []);
 
     if (!data) {
         return <div>일기를 불러오고 있습니다.... 잠시 기다려주세요.</div>;
